@@ -35,7 +35,7 @@ int main() {
 		}
 	}
 
-	displaySeats((char *) seats); //Displays
+	displaySeats((char *) seats); // Displays seats
 
 	int row, seat;
 
@@ -51,15 +51,15 @@ int main() {
 		scanf("%d", &seat);
 	} while (seat < 1 || seat > 30);
 
-	if (seats[row][seat] == '*') {
-		seats[row][seat] = '#';
+	if (seats[row - 1][seat - 1] == '*') {
+		seats[row - 1][seat - 1] = '#';
 		totalTicketSales += priceOfRow[row - 1];
 		seatsSold++;
 	} else {
 		printf("Row #%d, Seat #%d is taken.\n\n", row, seat);
 	}
 	
-	displaySeats((char *) seats); 
+	displaySeats((char *) seats); // Displays updated seats
 	
 	int choice = 0;
 
