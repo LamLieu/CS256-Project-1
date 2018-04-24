@@ -53,12 +53,14 @@ int main() {
 
 	if (seats[row][seat] == '*') {
 		seats[row][seat] = '#';
-		totalTicketSales += priceOfRow[row];
+		totalTicketSales += priceOfRow[row - 1];
 		seatsSold++;
 	} else {
 		printf("Row #%d, Seat #%d is taken.\n\n", row, seat);
 	}
-
+	
+	displaySeats((char *) seats); 
+	
 	int choice = 0;
 
 	do {
@@ -72,7 +74,8 @@ int main() {
 		fflush(stdout);
 		scanf("%d", &choice);
 	} while (choice < 1 || choice > 4);
-
+	
+	
 	int rowNumber;
 	int numOfSeatsInRow = 0;
 
@@ -92,7 +95,7 @@ int main() {
 		} while (rowNumber < 1 || rowNumber > 15);
 
 		for (int seatNumber = 0; seatNumber < 30; seatNumber++) {
-			if (seats[row][seatNumber] == '*') {
+			if (seats[row - 1][seatNumber] == '*') {
 				numOfSeatsInRow++;
 			}
 		}
